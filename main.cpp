@@ -4,10 +4,13 @@
 
 int main()
 {
-	SetConsoleOutputCP(1251);
 	SetConsoleCP(1251);
-	Person Person;
-	Person.Show();
-	Person.ShowFormal();
-
+	SetConsoleOutputCP(1251);
+	Person person;
+	Person person1("Мефёд ", "Иван ", "Евгеньевич ");
+	person.Show();
+	person.ShowFormal();
+	person1.Show();
+	person1.ShowFormal();
+	return 0;
 }

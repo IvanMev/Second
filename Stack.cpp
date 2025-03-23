@@ -3,12 +3,9 @@
 
 Person::Person()
 {
-	cout << "Введите фамилию: " << endl;
-	cin >> lastName;
-	cout << "Введите имя: " << endl;
-	cin >> firstName;
-	cout << "Введите отчество: " << endl;
-	cin >> patronymic;
+	lastName = "";
+	firstName = "";
+	patronymic = "";
 
 
 }
