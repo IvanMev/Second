@@ -2,6 +2,11 @@
 #include "Triangle.h"
 #include "Point.h"
 
+
+/**
+* @brief точка входа в программу
+* @return 0 в случае успеха
+*/
 int main() 
 {
     setlocale(LC_ALL, "Russian");
