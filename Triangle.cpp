@@ -1,27 +1,20 @@
 ﻿#include "Triangle.h"
 #include <cmath>
 
-Triangle::Triangle(const Point& A, const Point& B, const Point& C) : A(A), B(B), C(C)
+Triangle::Triangle(const Point& A, const Point& B, const Point& C) :
+    A(A), B(B), C(C),
+    a(sqrt(pow(B.x - C.x, 2) + pow(B.y - C.y, 2))),
+    b(sqrt(pow(A.x - C.x, 2) + pow(A.y - C.y, 2))),
+    c(sqrt(pow(A.x - B.x, 2) + pow(A.y - B.y, 2)))
 {
-    if ((A.x == B.x && A.y == B.y) ||
-       (A.x == C.x && A.y == C.y) ||
-       (B.x == C.x && B.y == C.y))
+    if (A == B || B == C || C == A)
     {
-       throw std::invalid_argument("Точки совпадают, невозможно построить треугольник");
+        throw std::invalid_argument("Точки совпадают, невозможно построить треугольник");
     }
 
-    double a = sqrt(pow(B.x - C.x, 2) + pow(B.y - C.y, 2)); 
-    double b = sqrt(pow(A.x - C.x, 2) + pow(A.y - C.y, 2)); 
-    double c = sqrt(pow(A.x - B.x, 2) + pow(A.y - B.y, 2)); 
-
-    if (a + b <= c || a + c <= b || b + c <= a) 
+    if (a + b <= c || a + c <= b || b + c <= a)
     {
         throw std::invalid_argument("Точки не образуют треугольник (нарушено неравенство треугольника)");
-    }
-
-    if (area() == 0) 
-    {
-        throw std::invalid_argument("Точки лежат на одной прямой (площадь равна нулю)");
     }
 }
 
@@ -36,21 +29,13 @@ Point Triangle::findHeightPointH() const
     double dotProduct = BA_x * BC_x + BA_y * BC_y;
     double BCLengthSquared = BC_x * BC_x + BC_y * BC_y;
 
-    if (BCLengthSquared == 0)
-    {
-        throw std::logic_error("Точки B и C совпадают, невозможно построить высоту");
-    }
-
     double t = dotProduct / BCLengthSquared;
+
     return Point(B.x + t * BC_x, B.y + t * BC_y);
 }
 
 double Triangle::area() const
 {
-    double a = sqrt(pow(B.x - C.x, 2) + pow(B.y - C.y, 2));
-    double b = sqrt(pow(A.x - C.x, 2) + pow(A.y - C.y, 2));
-    double c = sqrt(pow(A.x - B.x, 2) + pow(A.y - B.y, 2));
-
     double s = (a + b + c) / 2;
     return sqrt(s * (s - a) * (s - b) * (s - c));
 }

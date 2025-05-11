@@ -17,7 +17,18 @@ private:
     * @brief точка C
     */
     Point C;
-
+    /**
+    * @brief длина BC
+    */
+    double a;
+    /**
+    * @brief длина AC
+    */
+    double b;
+    /**
+    * @brief длина AB
+    */
+    double c;
 public:
     /**
     * @brief конструктор с параметрами

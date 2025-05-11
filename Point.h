@@ -4,7 +4,7 @@
 /**
 * @brief класс Точка
 */
-class Point 
+class Point
 {
 public:
     /**
@@ -19,6 +19,17 @@ public:
     * @brief конструктор с параметрами
     */
     Point(double x = 0, double y = 0);
+
+    /**
+    * @brief оператор сравнения точек на равенство
+    */
+    bool operator==(const Point& other) const;
+
+    /**
+    * @brief оператор сравнения точек на неравенство
+    */
+    bool operator!=(const Point& other) const;
+
     /**
     * @brief перенаправление объекта в поток вывода
     * @param os - поток вывода
