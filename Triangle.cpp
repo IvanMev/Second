@@ -3,9 +3,9 @@
 
 Triangle::Triangle(const Point& A, const Point& B, const Point& C) :
     A(A), B(B), C(C),
-    a(sqrt(pow(B.x - C.x, 2) + pow(B.y - C.y, 2))),
-    b(sqrt(pow(A.x - C.x, 2) + pow(A.y - C.y, 2))),
-    c(sqrt(pow(A.x - B.x, 2) + pow(A.y - B.y, 2)))
+    a(sqrt(pow(B.getX() - C.getX(), 2) + pow(B.getY() - C.getY(), 2))),
+    b(sqrt(pow(A.getX() - C.getX(), 2) + pow(A.getY() - C.getY(), 2))),
+    c(sqrt(pow(A.getX() - B.getX(), 2) + pow(A.getY() - B.getY(), 2)))
 {
     if (A == B || B == C || C == A)
     {
@@ -20,18 +20,18 @@ Triangle::Triangle(const Point& A, const Point& B, const Point& C) :
 
 Point Triangle::findHeightPointH() const
 {
-    double BC_x = C.x - B.x;
-    double BC_y = C.y - B.y;
+    double BC_x = C.getX() - B.getX();
+    double BC_y = C.getY() - B.getY();
 
-    double BA_x = A.x - B.x;
-    double BA_y = A.y - B.y;
+    double BA_x = A.getX() - B.getX();
+    double BA_y = A.getY() - B.getY();
 
     double dotProduct = BA_x * BC_x + BA_y * BC_y;
     double BCLengthSquared = BC_x * BC_x + BC_y * BC_y;
 
     double t = dotProduct / BCLengthSquared;
 
-    return Point(B.x + t * BC_x, B.y + t * BC_y);
+    return Point(B.getX() + t * BC_x, B.getY() + t * BC_y);
 }
 
 double Triangle::area() const

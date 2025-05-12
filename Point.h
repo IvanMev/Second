@@ -6,7 +6,7 @@
 */
 class Point
 {
-public:
+private:
     /**
     * @brief координата x
     */
@@ -15,10 +15,22 @@ public:
     * @brief координата y
     */
     double y;
+
+public:
     /**
     * @brief конструктор с параметрами
     */
     Point(double x = 0, double y = 0);
+
+    /**
+    * @brief получение координаты x
+    */
+    double getX() const;
+
+    /**
+    * @brief получение координаты y
+    */
+    double getY() const;
 
     /**
     * @brief оператор сравнения точек на равенство
